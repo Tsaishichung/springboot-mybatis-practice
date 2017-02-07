@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D:\亚信相关资料\开发\postgresql-9.4.1212.jre7.jar" />
+
+    <context id="Postgres" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://localhost:5432/postgres?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="postgres"
+                        password="postgres">
+        </jdbcConnection>
+
+        <!--<javaTypeResolver >-->
+        <!--<property name="forceBigDecimals" value="false" />-->
+        <!--</javaTypeResolver>-->
+
+        <javaModelGenerator targetPackage="edu.cust.course.Course.common.model" targetProject="src\main\java">
+            <!--<property name="trimStrings" value="true" />-->
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper\"  targetProject="src\main\resources">
+            <!--<property name="enableSubPackages" value="true" />-->
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="edu.cust.course.Course.common.mapper"
+                             targetProject="src\main\java">
+            <!--<property name="enableSubPackages" value="true" />-->
+        </javaClientGenerator>
+
+        <!--<table schema="study" tableName="hero" domainObjectName="Hero" />-->
+        <table schema="course" tableName="users" domainObjectName="User"  />
+        <table schema="course" tableName="menu" domainObjectName="Menu"  />
+        <table schema="course" tableName="article" domainObjectName="Article"  />
+        <table schema="course" tableName="meetting" domainObjectName="Meetting"  />
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TOP</title>
+<script type="text/javascript" src="/js/jquery-1.12.2.js"></script>
+<link rel="stylesheet" href="/css/myCss.css">
+<script type="text/javascript">
+//获取会议通知列表	
+$(function(){
+	  $.ajax({ 
+	        type: "post", 
+	        url: "/sys/platform/getMeettingList", 
+	        data:{limit:"yes"},
+	        cache:false, 
+	        async:false, 
+	        dataType: "json", 
+	        success: function(data){ 
+				console.log(data);
+				$.each(data,function(index, term){
+				var title = data[index].title;
+					$("#adviceTable").append("<tr><td class='td'><a style='color:blue' href='javascript:void(0)' onclick='showSingleMeetting('"+data+"')'>"+data[index].title+"</td><td style='color:blue'>"+data[index].meettingTime+"</td></tr>");
+				});
+	        } 
+
+	});
+});
+//获取单个会议通告时间
+function showSingleMeetting(data){console.log(data)}
+	
+</script>
+</head>
+<body style="border: none;">
+		<!-- <img alt="会议论文平台" src="/img/logo.png" align="left"  onclick="backtoindex()">
+		<p align="center"><a href="/sys/right" style="bottom: 10%;color: black; font: bold;" target="showFrame">论文中心</a></p>
+		<p align="right"><a href="/sys" style="bottom: 10%;color: silver; font: bold;">登录</a><a href="" style="color: silver;font: bold;">注册</a></p>
+		
+		<center>
+			<form action="/sys/platform/login" method="post" onsubmit="return login()">
+				账号：<input type="text" name="username">
+				密码：<input type="password" name="password">		
+				<input type="submit" value="登录" onclick="test()">
+			</form>
+			
+			<a href="/sys/platform/login" target="showFrame">注册</a>
+		</center> -->
+		
+		
+		
+		
+		<!-- 容器开始 -->
+		<div class="container">
+			<!-- 头部开始 -->
+			<div class="header">
+				<div class="logo"><img alt="会议论文平台" src="/img/logo.png"></div>
+				<div class="header_operate_failed">
+					<a style="color: white;font: bold;" href="">论文中心</a>&nbsp;
+					<a href="">登录</a>&nbsp;
+					<a href="" id="" onclick="">注册</a>
+				</div>
+			<hr>
+			</div>
+			<!-- 头部结束 -->
+			<!-- 正文开始 -->
+			<div class="content">
+				<!-- 正文左部开始 -->
+				<div class="content-left">
+					<!-- 正文左部上开始 -->
+					<div class="content-left-round-first">
+					<div style="text-align: left;">
+						<h3>论文会议通知：</h3>
+					</div>
+					  <table border="none" id="adviceTable">
+					  		<tr style="font-weight: 400;font-size: 40px;border-bottom: 2px;border-color: blue;">
+					  			<td ></td>
+					  		</tr>
+					  </table>
+					</div>
+					<!-- 正文左部上结束 -->
+					<!-- 正文左部下开始 -->
+					<div class="content-left-round-second">
+					  bbb
+					</div>
+					<!-- 正文左部下结束 -->
+				</div>
+				<!-- 正文左部结束 -->
+				<!-- 正文右部开始 -->
+				<div class="content-right">
+				<select onchange=""></select>
+					aaaa!!!
+				</div>
+				<!-- 正文右部结束 -->
+			</div>
+			<!-- 正文结束 -->
+			<!-- 底部开始 -->
+			<div class="footer">
+			@copyright cust版权所有。
+			</div>
+			<!-- 底部开始 -->
+		</div>
+		<!-- 容器结束 -->
+		<font color="red">*</font>
+</body>
+</html>
