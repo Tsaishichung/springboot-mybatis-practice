@@ -40,7 +40,7 @@ public class ArticleServiceImpl implements ArticleService {
 		Map<String,Object> map = new HashMap<String,Object>();
 		if(article.getArticle_extend_name().equals("doc")){
 			//使用poi获取work text信息
-			HWPFDocument docx = new HWPFDocument(new FileInputStream(Resource.getArticle()+article.getArticle_uuid_name()+"."+article.getArticle_extend_name()));
+			HWPFDocument docx = new HWPFDocument(new FileInputStream(System.getProperty("user.dir")+Resource.getArticle()+article.getArticle_uuid_name()+"."+article.getArticle_extend_name()));
 			@SuppressWarnings("resource")
 			WordExtractor we = new WordExtractor(docx);
 			map.put("context", we.getTextFromPieces());

@@ -32,9 +32,11 @@ import edu.cust.course.Course.common.model.Page;
 import edu.cust.course.Course.common.model.Resource;
 import edu.cust.course.Course.platform.service.ArticleService;
 import edu.cust.course.Course.platform.service.UserService;
+import lombok.extern.log4j.Log4j;
 
 @RestController
 @RequestMapping("/sys/platform/")
+@Log4j
 public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
@@ -146,10 +148,10 @@ public class ArticleController {
 	@RequestMapping("/user/fileUpLoad")
 	public ModelAndView toUploadFile(@RequestParam("file") MultipartFile file,Page page){
 		ModelAndView mav = new ModelAndView();
+		log.info("sb");
 		//文件上传操作
 		if(!file.isEmpty()){
 			try {
-				System.out.println();
 				String uuid = UUID.randomUUID().toString();
 				String suffix = file.getOriginalFilename().substring(
 						file.getOriginalFilename().indexOf(".")+1);
@@ -160,8 +162,9 @@ public class ArticleController {
 				page.getQuery().put("extend_name", suffix);
 				page.getQuery().put("is_used", 3);
 				//存入数据的文件名，本地文件也命名为这个
-				String filename = uuid+"."+suffix;
-				File localfile = new File(System.getProperty("user.dir")+Resource.getArticle(),filename);
+				String filename = System.getProperty("user.dir")+Resource.getArticle()+uuid+"."+suffix;
+				File localfile = new File(filename);
+				log.error(filename);
 				if(!localfile.exists()){
 					boolean createFileFlag = localfile.createNewFile();
 					if(createFileFlag){
