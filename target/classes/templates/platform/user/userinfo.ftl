@@ -150,7 +150,7 @@
 						 <form id="uploadFile_" action="/sys/platform/user/fileUpLoad" enctype="multipart/form-data" method="post" onsubmit="return upload()">
 						 	论文标题：<input type="text" name="query['article_name']" id="article_name"><br>
 	                   		<input type="hidden" name="query['id']" id="id" value="${Session.userSession.id}"/>
-						 	选择上传文件：<input type="file" name="file" id="file">
+						 	选择上传文件：<input type="file" name="textfile" id="file">
 				 	  论文类型：<select id="sb" name="query['type']">
 							 <option>---请选择---</option>
 							 <option>科研论文</option>

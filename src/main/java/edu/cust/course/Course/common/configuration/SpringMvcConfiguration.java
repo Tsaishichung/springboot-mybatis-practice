@@ -23,6 +23,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.HandlerMapping;
@@ -39,6 +40,7 @@ import edu.cust.course.Course.common.common.IpUtils;
 import lombok.extern.log4j.Log4j;
 
 @Configuration
+@Log4j
 public class SpringMvcConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
@@ -84,12 +86,22 @@ public class SpringMvcConfiguration extends WebMvcConfigurerAdapter {
 	public EmbeddedServletContainerCustomizer containerCustomizer(){
 	    return new Customizer();//ERROR渲染
 	}
-	/*//multipart上传配置
-	@Bean
-	public void multipartResolver(CommonsMultipartResolver commonsMultipartResolver){
+	//multipart上传配置
+	/*@Bean
+	public CommonsMultipartResolver  multipartResolver(CommonsMultipartResolver commonsMultipartResolver){
 		commonsMultipartResolver.setMaxUploadSizePerFile(1073741824);//设置每个文件上传大小不超过100M
 		commonsMultipartResolver.setMaxUploadSize(1073741824);
+		return commonsMultipartResolver;
 	}*/
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver multipartResolver() {
+	    log.info("Loading the multipart resolver");
+	    CommonsMultipartResolver multipartResolver 
+	            = new CommonsMultipartResolver();
+	    multipartResolver.setMaxUploadSizePerFile(1073741824);//设置每个文件上传大小不超过100M
+	    multipartResolver.setMaxUploadSize(1073741824);
+	    return multipartResolver;
+	}
 	//tomcat自定义设置,可作为properties的补充说明
 	@Bean
 	public EmbeddedServletContainerFactory servletContainer() {

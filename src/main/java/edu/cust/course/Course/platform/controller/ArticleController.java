@@ -146,9 +146,10 @@ public class ArticleController {
 		return mav;
 	}
 	@RequestMapping("/user/fileUpLoad")
-	public ModelAndView toUploadFile(@RequestParam("file") MultipartFile file,Page page){
+	@ResponseBody
+	public ModelAndView toUploadFile(@RequestParam("textfile") MultipartFile file,Page page){
 		ModelAndView mav = new ModelAndView();
-		log.info("sb");
+		log.info(file.isEmpty());
 		//文件上传操作
 		if(!file.isEmpty()){
 			try {
