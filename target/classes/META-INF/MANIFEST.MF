@@ -4,7 +4,7 @@ Implementation-Title: Course
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: edu.cust.course
 Build-Jdk: 1.7.0_03
-Built-By: Administrator
+Built-By: Tsaishichung
 Created-By: Maven Integration for Eclipse
 Implementation-URL: http://maven.apache.org
 

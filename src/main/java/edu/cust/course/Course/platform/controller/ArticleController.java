@@ -64,7 +64,7 @@ public class ArticleController {
 		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		//设置文件下载显示名称，及编码格式
 		headers.setContentDispositionFormData("attachment", article_name+"."+article_extend_name,Charset.forName("UTF-8"));
-		File file = new File("D:\\springbootLog\\course\\springupload\\"+article_uuid_name+"."+article_extend_name);
+		File file = new File(System.getProperty("user.dir")+Resource.getArticle()+article_uuid_name+"."+article_extend_name);
 		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),  
                 headers, HttpStatus.OK);  //create 201 IE不支持状态码。需要设置为200 OK
 	} 
@@ -161,7 +161,7 @@ public class ArticleController {
 				page.getQuery().put("is_used", 3);
 				//存入数据的文件名，本地文件也命名为这个
 				String filename = uuid+"."+suffix;
-				File localfile = new File(Resource.getArticle(),filename);
+				File localfile = new File(System.getProperty("user.dir")+Resource.getArticle(),filename);
 				if(!localfile.exists()){
 					boolean createFileFlag = localfile.createNewFile();
 					if(createFileFlag){

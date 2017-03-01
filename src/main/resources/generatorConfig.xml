@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <classPathEntry location="D:\亚信相关资料\开发\postgresql-9.4.1212.jre7.jar" />
+    <classPathEntry location="F:\开发工具包\工具压缩包\postgresql-9.4.1212.jre7.jar" />
 
     <context id="Postgres" targetRuntime="MyBatis3">
         <jdbcConnection driverClass="org.postgresql.Driver"
                         connectionURL="jdbc:postgresql://localhost:5432/postgres?useUnicode=true&amp;characterEncoding=UTF-8"
                         userId="postgres"
-                        password="postgres">
+                        password="admin">
         </jdbcConnection>
 
         <!--<javaTypeResolver >-->
